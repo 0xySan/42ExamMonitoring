@@ -59,13 +59,13 @@ def save_ids_to_json(value, filename="campuses.json"):
 		json.dump(value_map, f, ensure_ascii=False, indent=4)
 	print(f"✅ Saved {len(value_map)} campuses to '{filename}'")
 
-if __name__ == "__main__":
-	token = get_access_token()
-	with open("campuses.json", "r") as f:
-		campus_map = json.load(f)
-		campus_id = campus_map.get("Le Havre")
-	with open("cursus.json", "r") as f:
-		cursus_map = json.load(f)
-		cursus_id = cursus_map.get("Piscine C")
-	exams = get_all(token, f"https://api.intra.42.fr/v2/campus/{campus_id}/cursus/{cursus_id}/exams")
-	save_ids_to_json(exams, "exams.json")
+# if __name__ == "__main__":
+# 	token = get_access_token()
+# 	with open("campuses.json", "r") as f:
+# 		campus_map = json.load(f)
+# 		campus_id = campus_map.get("Le Havre")
+# 	with open("cursus.json", "r") as f:
+# 		cursus_map = json.load(f)
+# 		cursus_id = cursus_map.get("Piscine C")
+# 	exams = get_all(token, f"https://api.intra.42.fr/v2/campus/{campus_id}/cursus/{cursus_id}/exams")
+# 	save_ids_to_json(exams, "exams.json")
