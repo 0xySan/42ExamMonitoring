@@ -52,12 +52,12 @@ def get_all(token, uri=f"https://api.intra.42.fr/v2/campus"):
 	return value
 
 def save_ids_to_json(value, filename="campuses.json"):
-	# Extract name and id
-	value_map = {values["name"]: values["id"] for values in value}
-	# Save to file
-	with open(filename, "w", encoding="utf-8") as f:
-		json.dump(value_map, f, ensure_ascii=False, indent=4)
-	print(f"✅ Saved {len(value_map)} campuses to '{filename}'")
+    value_map = {values["name"]: values["id"] for values in value}
+    sorted_value_map = dict(sorted(value_map.items(), key=lambda item: item[0]))
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(sorted_value_map, f, ensure_ascii=False, indent=4)
+    print(f"✅ Saved {len(sorted_value_map)} campuses to '{filename}'")
+
 
 # if __name__ == "__main__":
 # 	token = get_access_token()
