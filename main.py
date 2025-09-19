@@ -140,6 +140,7 @@ class ButtonApp(App):
 			title='Please wait',
 			content=loading_label,
 			size_hint=(0.4, 0.2),
+			pos_hint={'center_x': 0.5, 'y': 0.05},
 			auto_dismiss=False
 		)
 		self.popup.open()
@@ -361,9 +362,9 @@ class ButtonApp(App):
 					# Determine color
 					if status == "finished":
 						color = hex_to_rgba("#98fb98")  # green
-					elif (now - self.last_update.get(login, now)).total_seconds() > 3600:  # 30min
-						color = hex_to_rgba("#ff4c4c")  # red if unchanged >30min
-					elif (now - self.last_update.get(login, now)).total_seconds() < 300:  # 5min
+					elif (now - self.last_update.get(login, now)).total_seconds() > 3600:  # 1h
+						color = hex_to_rgba("#ff4c4c")  # red if unchanged >1h
+					elif (now - self.last_update.get(login, now)).total_seconds() < 150:  # 2:30min
 						color = hex_to_rgba("#00b7eb")  # blue if score changed
 					else:
 						color = hex_to_rgba("#b0b0b0")  # gray otherwise
